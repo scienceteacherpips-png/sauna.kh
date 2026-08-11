@@ -63,10 +63,11 @@ body {
     max-width: 650px;
     width: 100%;
     border-radius: 28px;
-    padding: 25px 20px; /* Оптимізовані відступи */
+    padding: 25px 20px;
     box-shadow: 0 20px 50px rgba(10, 92, 90, 0.06);
     position: relative;
     z-index: 10;
+    box-sizing: border-box;
 }
 
 .price-header {
@@ -75,7 +76,7 @@ body {
 }
 
 .main-title {
-    font-size: clamp(2.5rem, 8vw, 4rem); /* Адаптивний розмір шрифту */
+    font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 900;
     color: var(--deep-ocean);
     margin: 0 0 12px 0;
@@ -136,13 +137,16 @@ body {
     white-space: nowrap;
 }
 
-/* Інтерфейс калькулятора */
+/* Інтерфейс калькулятора (Ключові виправлення тут) */
 .calculator-section {
     background-color: var(--soft-mint);
     border-radius: 22px;
     padding: 20px 16px;
     margin-bottom: 25px;
     border: 1px solid rgba(20, 184, 166, 0.15);
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Гарантує, що вміст не вилізе за краї */
 }
 
 .calc-title {
@@ -157,6 +161,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
+    width: 100%;
 }
 
 .full-width {
@@ -167,6 +172,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    min-width: 0; /* Обов'язково для коректної роботи grid/flex в Chrome та Safari */
+    width: 100%;
 }
 
 .calc-control label {
@@ -175,8 +182,14 @@ body {
     color: var(--deep-ocean);
 }
 
-.calc-control select, .calc-control input {
-    padding: 10px;
+/* Жорстке обмеження ширини та відображення для списків та полів */
+.calc-control select, 
+.calc-control input {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px;
     border: 1px solid rgba(10, 92, 90, 0.15);
     border-radius: 12px;
     background: var(--card-bg);
@@ -184,13 +197,22 @@ body {
     font-size: 0.9rem;
     color: var(--dark-slate);
     outline: none;
-    width: 100%;
+    appearance: none; /* Забирає стандартні стилі браузера */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%0a5c5a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 32px; /* Місце під стрілочку */
 }
 
 .discounts-block {
     margin-top: 18px;
     padding-top: 16px;
     border-top: 1px dashed rgba(10, 92, 90, 0.15);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .discount-title {
@@ -204,6 +226,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
 }
 
 .radio-label {
@@ -214,6 +237,7 @@ body {
     cursor: pointer;
     font-weight: 500;
     line-height: 1.35;
+    word-break: break-word;
 }
 
 .radio-label input {
@@ -234,6 +258,7 @@ body {
     font-weight: 600;
     border: 1px solid #a7f3d0;
     line-height: 1.4;
+    word-break: break-word;
 }
 
 /* Блок цін результату */
@@ -246,12 +271,15 @@ body {
     border-top: 1px dashed rgba(10, 92, 90, 0.2);
     gap: 10px;
     flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .calc-details {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    max-width: 100%;
 }
 
 #hours-summary {
@@ -304,8 +332,9 @@ body {
 .price-table {
     background-color: var(--deep-ocean);
     border-radius: 18px;
-    overflow-x: auto; /* Можливість горизонтального прокручування таблиці на дуже малик екранах */
+    overflow-x: auto;
     box-shadow: 0 10px 30px rgba(10, 92, 90, 0.1);
+    width: 100%;
 }
 
 .table-title {
@@ -322,7 +351,7 @@ body {
     grid-template-columns: 1.4fr 1fr 1fr 1fr;
     background-color: #d1eae7;
     gap: 1px;
-    min-width: 320px; /* Мінімальна ширина для збереження форми таблиці */
+    min-width: 320px;
 }
 
 .grid-header {
@@ -461,12 +490,16 @@ body {
 /* Мобільні адаптивні медіазапити (до 520px) */
 @media (max-width: 520px) {
     body {
-        padding: 10px 8px;
+        padding: 8px 5px;
     }
 
     .price-container {
-        padding: 18px 12px;
-        border-radius: 20px;
+        padding: 15px 10px;
+        border-radius: 18px;
+    }
+
+    .calculator-section {
+        padding: 15px 10px;
     }
 
     .info-blocks, .price-footer {
