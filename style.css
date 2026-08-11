@@ -1,13 +1,18 @@
+```css
 /* =========================================================
-   SAUNA KH — ПОВНИЙ АДАПТИВНИЙ CSS
+   SAUNA KH — STYLE.CSS
+   Адаптивна версія для ПК, планшетів і смартфонів
    ========================================================= */
 
-/* ---------- ЗМІННІ ---------- */
+
+/* =========================================================
+   1. ОСНОВНІ ЗМІННІ
+   ========================================================= */
 
 :root {
     --bg-page: #e6f4f2;
-    --bg-container: #f4fcfb;
-    --bg-card: #ffffff;
+    --bg-main: #f4fcfb;
+    --white: #ffffff;
 
     --deep-ocean: #0a5c5a;
     --ocean: #0e7471;
@@ -17,30 +22,19 @@
     --lime: #84cc16;
 
     --text: #0f2d2d;
-    --text-muted: #52706f;
+    --muted: #52706f;
 
-    --border: rgba(10, 92, 90, 0.14);
-
-    --danger-bg: #fef2f2;
-    --danger-border: #fee2e2;
-    --danger-text: #991b1b;
-
-    --success-bg: #f0fdf4;
-    --success-border: #dcfce7;
-    --success-text: #166534;
+    --border: rgba(10, 92, 90, 0.15);
 
     --radius-xl: 24px;
     --radius-lg: 20px;
     --radius-md: 16px;
     --radius-sm: 12px;
-
-    --shadow:
-        0 20px 50px rgba(10, 92, 90, 0.08);
 }
 
 
 /* =========================================================
-   RESET
+   2. RESET
    ========================================================= */
 
 *,
@@ -51,9 +45,7 @@
 
 html {
     width: 100%;
-    max-width: 100%;
     min-width: 0;
-
     margin: 0;
     padding: 0;
 
@@ -62,11 +54,14 @@ html {
 
 body {
     width: 100%;
-    max-width: 100%;
     min-width: 0;
+    max-width: 100%;
 
     margin: 0;
-    padding: 12px;
+    padding: 12px 8px;
+
+    background: var(--bg-page);
+    color: var(--text);
 
     font-family:
         "Segoe UI",
@@ -75,34 +70,18 @@ body {
         BlinkMacSystemFont,
         sans-serif;
 
-    color: var(--text);
-    background: var(--bg-page);
-
     overflow-x: hidden;
+
     -webkit-text-size-adjust: 100%;
-}
-
-img,
-svg,
-video {
-    max-width: 100%;
-}
-
-button,
-input,
-select,
-textarea {
-    font: inherit;
 }
 
 
 /* =========================================================
-   ДЕКОР ФОНУ
+   3. ДЕКОР
    ========================================================= */
 
 .bg-decor-wave {
     position: fixed;
-    z-index: 0;
 
     top: 0;
     left: 0;
@@ -120,11 +99,11 @@ textarea {
     clip-path: ellipse(80% 50% at 50% 0%);
 
     pointer-events: none;
+    z-index: 0;
 }
 
 .bg-decor-palm {
     position: fixed;
-    z-index: 0;
 
     left: -25px;
     bottom: -30px;
@@ -137,39 +116,45 @@ textarea {
 
     pointer-events: none;
     user-select: none;
+
+    z-index: 0;
 }
 
 
 /* =========================================================
-   ГОЛОВНИЙ КОНТЕЙНЕР
+   4. ГЛАВНЫЙ КОНТЕЙНЕР
    ========================================================= */
 
 .price-container {
     position: relative;
     z-index: 10;
 
-    width: min(100%, 650px);
+    width: 100%;
+    max-width: 650px;
+    min-width: 0;
 
     margin: 0 auto;
 
-    padding: 20px 16px;
+    padding: 20px 14px;
 
-    background: var(--bg-container);
+    background: var(--bg-main);
 
     border-radius: var(--radius-xl);
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        0 20px 50px rgba(10, 92, 90, 0.08);
 
     overflow: hidden;
 }
 
 
 /* =========================================================
-   ШАПКА
+   5. HEADER
    ========================================================= */
 
 .price-header {
     width: 100%;
+    min-width: 0;
 
     margin-bottom: 20px;
 
@@ -181,8 +166,9 @@ textarea {
 
     color: var(--deep-ocean);
 
-    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
     line-height: 1;
+
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -198,27 +184,26 @@ textarea {
     padding: 6px 20px;
 
     color: var(--deep-ocean);
+
+    border: 2px solid var(--deep-ocean);
+    border-radius: 50px;
+
     text-decoration: none;
 
     font-size: 0.85rem;
     font-weight: 700;
 
-    border: 2px solid var(--deep-ocean);
-    border-radius: 50px;
-
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .instagram-tag:hover {
     background: var(--deep-ocean);
-    color: #fff;
+    color: #ffffff;
 }
 
 
 /* =========================================================
-   ІНФОРМАЦІЙНІ БЛОКИ
+   6. ІНФОРМАЦІЙНІ БЛОКИ
    ========================================================= */
 
 .info-blocks {
@@ -245,23 +230,14 @@ textarea {
 
     gap: 8px;
 
-    padding: 12px;
+    padding: 11px;
 
-    background: var(--bg-card);
+    background: var(--white);
 
     border-radius: var(--radius-md);
 
     box-shadow:
         0 4px 15px rgba(10, 92, 90, 0.04);
-}
-
-.info-box p {
-    min-width: 0;
-
-    margin: 0;
-
-    font-size: 0.8rem;
-    line-height: 1.35;
 }
 
 .box-icon {
@@ -270,24 +246,33 @@ textarea {
     font-size: 1.4rem;
 }
 
+.info-box p {
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
 .highlight-lime {
     display: inline-block;
 
-    color: #4d7c0f;
-    font-weight: 700;
-
-    background: #f0fdf4;
-
     padding: 2px 4px;
+
+    color: #4d7c0f;
+    background: #f0fdf4;
 
     border-radius: 6px;
 
+    font-weight: 700;
     white-space: nowrap;
 }
 
 
 /* =========================================================
-   КАЛЬКУЛЯТОР
+   7. КАЛЬКУЛЯТОР
    ========================================================= */
 
 .calculator-section {
@@ -295,11 +280,12 @@ textarea {
     min-width: 0;
 
     margin-bottom: 20px;
-    padding: 18px;
+    padding: 16px 12px;
 
     background: var(--soft-mint);
 
     border: 1px solid rgba(20, 184, 166, 0.15);
+
     border-radius: var(--radius-lg);
 
     overflow: hidden;
@@ -307,12 +293,13 @@ textarea {
 
 .calc-title {
     width: 100%;
+    min-width: 0;
 
-    margin: 0 0 16px;
+    margin: 0 0 14px;
 
     color: var(--deep-ocean);
 
-    font-size: 1rem;
+    font-size: 0.98rem;
     line-height: 1.3;
     font-weight: 800;
 
@@ -321,7 +308,7 @@ textarea {
 
 
 /* =========================================================
-   СІТКА ПОЛІВ
+   8. СІТКА КАЛЬКУЛЯТОРА
    ========================================================= */
 
 .calc-grid {
@@ -331,7 +318,7 @@ textarea {
         minmax(0, 1fr)
         minmax(0, 1fr);
 
-    gap: 12px;
+    gap: 10px;
 
     width: 100%;
     min-width: 0;
@@ -343,19 +330,28 @@ textarea {
 
     width: 100%;
     min-width: 0;
+    max-width: 100%;
 
-    gap: 6px;
+    gap: 5px;
+
+    overflow: hidden;
 }
 
-.calc-control.full-width {
+.full-width {
     grid-column: 1 / -1;
 }
+
+
+/* =========================================================
+   9. LABEL
+   ========================================================= */
 
 .calc-control label {
     display: block;
 
     width: 100%;
     min-width: 0;
+    max-width: 100%;
 
     color: var(--deep-ocean);
 
@@ -370,58 +366,57 @@ textarea {
 
 
 /* =========================================================
-   INPUT / SELECT
+   10. SELECT / INPUT
    ========================================================= */
 
 .calc-control select,
 .calc-control input {
     display: block;
 
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
 
     height: 42px;
 
-    padding: 8px 38px 8px 11px;
+    margin: 0;
+    padding: 9px 34px 9px 10px;
+
+    box-sizing: border-box !important;
 
     color: var(--text);
 
-    background-color: var(--bg-card);
+    background-color: var(--white);
 
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
 
     outline: none;
 
+    font-family: inherit;
     font-size: 0.85rem;
     line-height: 1.2;
-
-    box-shadow: none;
 
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    -webkit-appearance: none;
-    appearance: none;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
 }
 
 .calc-control select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
     background-image:
         url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a5c5a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 
     background-repeat: no-repeat;
-    background-position: right 11px center;
-    background-size: 15px;
+    background-position: right 9px center;
+    background-size: 14px;
 }
 
 .calc-control input[type="number"] {
-    padding-right: 11px;
+    padding-right: 10px;
 
     background-image: none;
 }
@@ -436,24 +431,25 @@ textarea {
 
 
 /* =========================================================
-   БЛОК АКЦІЙ
+   11. АКЦІЇ
    ========================================================= */
 
 .discounts-block {
     width: 100%;
     min-width: 0;
 
-    margin-top: 18px;
-    padding-top: 15px;
+    margin-top: 15px;
+    padding-top: 14px;
 
     border-top:
-        1px dashed rgba(10, 92, 90, 0.18);
+        1px dashed rgba(10, 92, 90, 0.15);
 }
 
 .discount-title {
     width: 100%;
+    min-width: 0;
 
-    margin: 0 0 11px;
+    margin: 0 0 10px;
 
     color: var(--deep-ocean);
 
@@ -469,7 +465,7 @@ textarea {
     width: 100%;
     min-width: 0;
 
-    gap: 9px;
+    gap: 8px;
 }
 
 .radio-label {
@@ -481,10 +477,8 @@ textarea {
 
     gap: 8px;
 
-    color: var(--text);
-
     font-size: 0.8rem;
-    line-height: 1.35;
+    line-height: 1.3;
     font-weight: 500;
 
     cursor: pointer;
@@ -509,15 +503,15 @@ textarea {
 
 
 /* =========================================================
-   ІНФОРМАЦІЙНЕ ПОВІДОМЛЕННЯ
+   12. ПОВІДОМЛЕННЯ
    ========================================================= */
 
 .calc-info-badge {
     width: 100%;
     min-width: 0;
 
-    margin-top: 13px;
-    padding: 9px 11px;
+    margin-top: 12px;
+    padding: 8px 10px;
 
     color: #065f46;
 
@@ -527,7 +521,7 @@ textarea {
     border-radius: var(--radius-sm);
 
     font-size: 0.78rem;
-    line-height: 1.4;
+    line-height: 1.35;
     font-weight: 600;
 
     overflow-wrap: anywhere;
@@ -535,7 +529,7 @@ textarea {
 
 
 /* =========================================================
-   РЕЗУЛЬТАТ
+   13. РЕЗУЛЬТАТ
    ========================================================= */
 
 .calc-result {
@@ -546,13 +540,13 @@ textarea {
     width: 100%;
     min-width: 0;
 
-    gap: 12px;
+    gap: 8px;
 
-    margin-top: 16px;
-    padding-top: 13px;
+    margin-top: 15px;
+    padding-top: 12px;
 
     border-top:
-        1px dashed rgba(10, 92, 90, 0.20);
+        1px dashed rgba(10, 92, 90, 0.2);
 }
 
 .calc-details {
@@ -561,13 +555,11 @@ textarea {
 
     min-width: 0;
 
-    gap: 5px;
+    gap: 4px;
 }
 
 #hours-summary {
     min-width: 0;
-
-    color: var(--text);
 
     font-size: 0.8rem;
     line-height: 1.3;
@@ -580,16 +572,14 @@ textarea {
     width: fit-content;
     max-width: 100%;
 
-    padding: 3px 7px;
+    padding: 2px 6px;
 
     color: #1f2937;
-
     background: var(--lime);
 
     border-radius: 6px;
 
     font-size: 0.7rem;
-    line-height: 1.2;
     font-weight: 700;
 
     overflow-wrap: anywhere;
@@ -601,11 +591,10 @@ textarea {
     max-width: 100%;
 
     margin-top: 4px;
-    padding: 5px 8px;
+    padding: 4px 8px;
 
     color: #166534;
-
-    background: #fff;
+    background: #ffffff;
 
     border: 1px dashed #4ade80;
     border-radius: 8px;
@@ -625,8 +614,6 @@ textarea {
 
 .price-display span {
     display: block;
-
-    margin-bottom: 2px;
 
     font-size: 0.73rem;
     line-height: 1.2;
@@ -648,7 +635,7 @@ textarea {
 
 
 /* =========================================================
-   ТАБЛИЦЯ ТАРИФІВ
+   14. ТАБЛИЦЯ
    ========================================================= */
 
 .price-table {
@@ -665,13 +652,13 @@ textarea {
 .table-title {
     width: 100%;
 
-    padding: 11px;
+    padding: 10px;
 
-    color: #fff;
+    color: #ffffff;
 
     font-size: 0.78rem;
     line-height: 1.2;
-    font-weight: 800;
+    font-weight: 700;
 
     text-align: center;
 }
@@ -680,10 +667,10 @@ textarea {
     display: grid;
 
     grid-template-columns:
-        minmax(120px, 1.3fr)
-        minmax(65px, 1fr)
-        minmax(65px, 1fr)
-        minmax(65px, 1fr);
+        minmax(0, 1.3fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr);
 
     gap: 1px;
 
@@ -696,10 +683,9 @@ textarea {
 .grid-header {
     min-width: 0;
 
-    padding: 9px 4px;
+    padding: 8px 3px;
 
-    color: #fff;
-
+    color: #ffffff;
     background: var(--ocean);
 
     font-size: 0.68rem;
@@ -728,7 +714,7 @@ textarea {
 .price-value {
     min-width: 0;
 
-    background: var(--bg-card);
+    background: var(--white);
 }
 
 .service-name {
@@ -736,12 +722,12 @@ textarea {
     flex-direction: column;
     justify-content: center;
 
-    padding: 9px 6px;
+    padding: 8px 4px;
 
     color: var(--text);
 
     font-size: 0.7rem;
-    line-height: 1.25;
+    line-height: 1.2;
 
     overflow-wrap: anywhere;
 }
@@ -751,58 +737,50 @@ textarea {
     align-items: center;
     justify-content: center;
 
-    padding: 9px 3px;
+    padding: 8px 3px;
 
     color: var(--deep-ocean);
 
     font-size: 0.85rem;
     line-height: 1.1;
-    font-weight: 800;
+    font-weight: 700;
 
     text-align: center;
 }
 
 .or-badge {
-    display: block;
-
     width: fit-content;
 
-    margin: 3px 0;
-    padding: 1px 4px;
+    margin: 2px 0;
+    padding: 1px 3px;
 
     color: #4b5563;
-
     background: #f3f4f6;
 
     border-radius: 4px;
 
     font-size: 0.55rem;
-    line-height: 1.2;
     font-weight: 700;
 }
 
 .all-in-cell,
 .premium {
-    background: var(--success-bg);
+    background: #f0fdf4;
 }
 
 .all-inclusive-badge {
-    display: inline-block;
-
     width: fit-content;
     max-width: 100%;
 
-    margin-top: 4px;
+    margin-top: 3px;
     padding: 2px 4px;
 
-    color: #fff;
-
+    color: #ffffff;
     background: var(--turquoise);
 
     border-radius: 4px;
 
     font-size: 0.48rem;
-    line-height: 1.2;
     font-weight: 700;
 
     overflow-wrap: anywhere;
@@ -814,7 +792,7 @@ textarea {
 
 
 /* =========================================================
-   ПРИМІТКА ПІД ТАБЛИЦЕЮ
+   15. ПРИМІТКА
    ========================================================= */
 
 .table-footnote {
@@ -822,17 +800,15 @@ textarea {
 
     margin: 10px 0;
 
-    color: var(--text);
-
     font-size: 0.75rem;
-    line-height: 1.35;
+    line-height: 1.3;
 
     text-align: center;
 }
 
 
 /* =========================================================
-   FOOTER
+   16. FOOTER
    ========================================================= */
 
 .price-footer {
@@ -849,13 +825,13 @@ textarea {
     width: 100%;
     min-width: 0;
 
-    padding: 13px;
+    padding: 12px;
 
     border-radius: 14px;
 }
 
 .footer-box h4 {
-    margin: 0 0 5px;
+    margin: 0 0 4px;
 
     font-size: 0.8rem;
     line-height: 1.2;
@@ -865,30 +841,30 @@ textarea {
     margin: 0;
 
     font-size: 0.75rem;
-    line-height: 1.4;
+    line-height: 1.3;
 
     overflow-wrap: anywhere;
 }
 
 .alert-box {
-    color: var(--danger-text);
+    color: #991b1b;
 
-    background: var(--danger-bg);
+    background: #fef2f2;
 
-    border: 1px solid var(--danger-border);
+    border: 1px solid #fee2e2;
 }
 
 .additional-box {
-    color: var(--success-text);
+    color: #166534;
 
-    background: var(--success-bg);
+    background: #f0fdf4;
 
-    border: 1px solid var(--success-border);
+    border: 1px solid #dcfce7;
 }
 
 .seasonal-text {
-    margin-top: 6px !important;
-    padding-top: 6px;
+    margin-top: 5px !important;
+    padding-top: 5px;
 
     border-top:
         1px dashed rgba(22, 101, 52, 0.2);
@@ -898,150 +874,113 @@ textarea {
 
 .accent-text {
     color: var(--turquoise);
-    font-weight: 800;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   ПЛАНШЕТ
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    body {
-        padding: 8px;
-    }
-
-    .price-container {
-        width: 100%;
-        padding: 18px 12px;
-
-        border-radius: 20px;
-    }
-
-    .calculator-section {
-        padding: 16px 11px;
-    }
-}
-
-
-/* =========================================================
-   ТЕЛЕФОН
+   17. МОБІЛЬНА ВЕРСІЯ
    ========================================================= */
 
 @media (max-width: 600px) {
 
     body {
-        padding: 5px;
+        padding: 4px;
     }
 
     .price-container {
         width: 100%;
         max-width: 100%;
 
-        padding: 15px 9px;
+        margin: 0;
+
+        padding: 15px 8px;
 
         border-radius: 18px;
     }
 
-    .price-header {
-        margin-bottom: 16px;
-    }
 
-    .main-title {
-        font-size: clamp(2rem, 12vw, 3rem);
-    }
-
-    .instagram-tag {
-        max-width: 100%;
-
-        padding: 6px 16px;
-
-        font-size: 0.8rem;
-    }
-
-
-    /* ---------- Інформаційні картки ---------- */
-
+    /* Інформаційні блоки */
     .info-blocks {
         grid-template-columns: 1fr;
 
         gap: 8px;
-
-        margin-bottom: 16px;
-    }
-
-    .info-box {
-        padding: 10px;
     }
 
 
-    /* ---------- Калькулятор ---------- */
-
+    /* Калькулятор */
     .calculator-section {
-        padding: 14px 9px;
+        width: 100%;
+        max-width: 100%;
 
-        border-radius: 17px;
+        padding: 14px 8px;
     }
 
-    .calc-title {
-        font-size: 0.95rem;
-    }
 
     /*
-       На телефоні кожен контрол займає
-       окремий рядок.
+       КЛЮЧОВЕ ВИПРАВЛЕННЯ:
+       Ніякого grid на мобільному.
+       Просто вертикальний flex.
     */
+
     .calc-grid {
-        grid-template-columns: minmax(0, 1fr);
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
 
         gap: 10px;
     }
 
     .calc-control,
     .calc-control.full-width {
-        grid-column: 1 / -1;
+        display: flex;
 
         width: 100%;
         min-width: 0;
         max-width: 100%;
+
+        flex: 0 0 auto;
+
+        grid-column: auto;
     }
+
+
+    /*
+       КЛЮЧОВЕ:
+       select/input фізично не можуть бути
+       ширшими за calc-control.
+    */
 
     .calc-control select,
     .calc-control input {
+        display: block;
+
         width: 100% !important;
         min-width: 0 !important;
         max-width: 100% !important;
 
-        /*
-           16px запобігає небажаному zoom
-           на iPhone при фокусі.
-        */
+        height: 44px;
+
+        margin: 0;
+
+        box-sizing: border-box !important;
+
         font-size: 16px;
     }
 
 
-    /* ---------- Акції ---------- */
-
-    .discount-title {
-        font-size: 0.8rem;
-    }
-
-    .radio-label {
-        font-size: 0.78rem;
-    }
-
-
-    /* ---------- Результат ---------- */
-
+    /* Результат */
     .calc-result {
-        align-items: flex-start;
+        flex-wrap: wrap;
 
-        gap: 10px;
+        align-items: flex-start;
     }
 
     .calc-details {
-        flex: 1 1 auto;
+        flex: 1 1 0;
         min-width: 0;
     }
 
@@ -1049,99 +988,66 @@ textarea {
         flex: 0 0 auto;
     }
 
-    #total-price {
-        font-size: 1.25rem;
-    }
 
-
-    /* ---------- Таблиця ---------- */
-
+    /* Таблиця */
     .price-table {
+        width: 100%;
+        max-width: 100%;
+
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
     }
 
     .grid-table {
-        /*
-           Таблиця залишається читабельною.
-           Вона може мати власну горизонтальну
-           прокрутку, але НЕ розширює всю сторінку.
-        */
         width: 100%;
         min-width: 0;
 
         grid-template-columns:
-            minmax(105px, 1.3fr)
-            minmax(58px, 1fr)
-            minmax(58px, 1fr)
-            minmax(58px, 1fr);
+            minmax(0, 1.3fr)
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            minmax(0, 1fr);
     }
 
     .grid-header {
-        padding: 8px 3px;
+        padding: 7px 2px;
 
-        font-size: 0.63rem;
+        font-size: 0.62rem;
     }
 
     .grid-header span {
-        font-size: 0.55rem;
+        font-size: 0.53rem;
     }
 
     .service-name {
-        padding: 8px 5px;
+        padding: 7px 4px;
 
-        font-size: 0.66rem;
+        font-size: 0.64rem;
     }
 
     .price-value {
-        padding: 8px 2px;
+        padding: 7px 2px;
 
-        font-size: 0.8rem;
-    }
-
-    .table-footnote {
-        font-size: 0.7rem;
-    }
-
-
-    /* ---------- Footer ---------- */
-
-    .footer-box {
-        padding: 11px;
+        font-size: 0.78rem;
     }
 }
 
 
 /* =========================================================
-   ДУЖЕ ВУЗЬКІ ТЕЛЕФОНИ
+   18. ДУЖЕ МАЛИЙ ЕКРАН
    ========================================================= */
 
 @media (max-width: 380px) {
 
-    body {
-        padding: 3px;
-    }
-
     .price-container {
         padding: 13px 7px;
-
-        border-radius: 15px;
     }
 
     .calculator-section {
         padding: 12px 7px;
     }
 
-    .calc-title {
-        font-size: 0.9rem;
-    }
-
-    .calc-control select,
-    .calc-control input {
-        height: 40px;
-
-        padding-left: 9px;
-        padding-right: 34px;
+    .main-title {
+        font-size: 2.2rem;
     }
 
     .calc-result {
@@ -1158,36 +1064,16 @@ textarea {
         font-size: 1.3rem;
     }
 
-    .grid-table {
-        grid-template-columns:
-            minmax(95px, 1.25fr)
-            minmax(55px, 1fr)
-            minmax(55px, 1fr)
-            minmax(55px, 1fr);
+    .grid-header {
+        font-size: 0.58rem;
     }
 
     .service-name {
-        font-size: 0.62rem;
+        font-size: 0.6rem;
     }
 
     .price-value {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
     }
 }
-
-
-/* =========================================================
-   ACCESSIBILITY / TOUCH
-   ========================================================= */
-
-@media (hover: none) and (pointer: coarse) {
-
-    .calc-control select,
-    .calc-control input {
-        min-height: 44px;
-    }
-
-    .instagram-tag {
-        min-height: 40px;
-    }
-}
+```
